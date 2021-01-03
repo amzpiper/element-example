@@ -122,13 +122,16 @@
               </el-menu>
             </div>
           </el-aside>
-
+          <!-- right -->
           <el-container>
             <!-- header -->
             <el-header class="main-header">
               <el-dropdown>
                 <span class="el-dropdown-link">
-                  <img src="http://i1.hdslb.com/bfs/face/ea417a3c3879574ce7f49e023eb627365105b8dc.jpg" alt="" />
+                  <img
+                    src="http://i1.hdslb.com/bfs/face/ea417a3c3879574ce7f49e023eb627365105b8dc.jpg"
+                    alt=""
+                  />
                 </span>
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item>个人中心</el-dropdown-item>
@@ -147,16 +150,103 @@
                 <el-breadcrumb-item>活动列表</el-breadcrumb-item>
                 <el-breadcrumb-item>活动详情</el-breadcrumb-item>
               </el-breadcrumb>
+              <!-- context -->
+              <div>
+                <el-row>
+                  <el-button>默认按钮</el-button>
+                  <el-button type="primary">主要按钮</el-button>
+                  <el-button type="success">成功按钮</el-button>
+                  <el-button type="info">信息按钮</el-button>
+                  <el-button type="warning">警告按钮</el-button>
+                  <el-button type="danger">危险按钮</el-button>
+                </el-row>
+                <br>
+
+                <el-row>
+                  <el-button plain>朴素按钮</el-button>
+                  <el-button type="primary" plain>主要按钮</el-button>
+                  <el-button type="success" plain>成功按钮</el-button>
+                  <el-button type="info" plain>信息按钮</el-button>
+                  <el-button type="warning" plain>警告按钮</el-button>
+                  <el-button type="danger" plain>危险按钮</el-button>
+                </el-row>
+                <br>
+
+                <el-row>
+                  <el-button round>圆角按钮</el-button>
+                  <el-button type="primary" round>主要按钮</el-button>
+                  <el-button type="success" round>成功按钮</el-button>
+                  <el-button type="info" round>信息按钮</el-button>
+                  <el-button type="warning" round>警告按钮</el-button>
+                  <el-button type="danger" round>危险按钮</el-button>
+                </el-row>
+                <br>
+
+                <el-row>
+                  <el-button icon="el-icon-search" circle></el-button>
+                  <el-button
+                    type="primary"
+                    icon="el-icon-edit"
+                    circle
+                  ></el-button>
+                  <el-button
+                    type="success"
+                    icon="el-icon-check"
+                    circle
+                  ></el-button>
+                  <el-button
+                    type="info"
+                    icon="el-icon-message"
+                    circle
+                  ></el-button>
+                  <el-button
+                    type="warning"
+                    icon="el-icon-star-off"
+                    circle
+                  ></el-button>
+                  <el-button
+                    type="danger"
+                    icon="el-icon-delete"
+                    circle
+                  ></el-button>
+                </el-row>
+                <br>
+
+                <el-time-select
+                  v-model="value"
+                  :picker-options="{
+                    start: '08:30',
+                    step: '00:15',
+                    end: '18:30'
+                  }"
+                  placeholder="选择时间"
+                >
+                </el-time-select>
+                <br>
+
+                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                  <el-form-item label="审批人">
+                    <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                  </el-form-item>
+                  <el-form-item label="活动区域">
+                    <el-select v-model="formInline.region" placeholder="活动区域">
+                      <el-option label="区域一" value="shanghai"></el-option>
+                      <el-option label="区域二" value="beijing"></el-option>
+                    </el-select>
+                  </el-form-item>
+                  <el-form-item>
+                    <el-button type="primary" @click="onSubmit">查询</el-button>
+                  </el-form-item>
+                </el-form>
+              </div>
             </el-main>
             <!-- fotter -->
             <el-footer class="main-footer" height="50px">
               <p>ROMA se20.0.c</p>
             </el-footer>
           </el-container>
-
         </el-container>
       </div>
-
     </div>
   </body>
 
@@ -176,6 +266,11 @@
           tabWidth: 200,
           test1: 1,
           intelval: null,
+          value:'',
+          formInline: {
+            user: '',
+            region: ''
+          }
         };
       },
       methods: {
@@ -197,6 +292,9 @@
           }
           this.isCollapse = !this.isCollapse;
         },
+        onSubmit() {
+          console.log('submit!');
+        }
       },
     });
   </script>
